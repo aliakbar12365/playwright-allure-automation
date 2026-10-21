@@ -37,9 +37,29 @@ jobs:
 
           npm install -g allure-commandline
 
+      # - name: Run Playwright tests
+      #   run: |
+      #     python -m pytest tests/ -v --alluredir=allure-results
+      
       - name: Run Playwright tests
         run: |
-          python -m pytest tests/ -v --alluredir=allure-results
+          python -m pytest tests/ -v \
+            --video on \
+            --alluredir=allure-results \
+            --clean-alluredir
+
+
+      - name: Check Allure video attachments
+        if: always()
+        run: |
+          echo "=== Video attachments in Allure results ==="
+          find allure-results -type f -name "*.webm" -print
+
+          echo "=== Allure attachment metadata ==="
+          grep -l '"type":"video/webm"' allure-results/*-result.json || true
+
+          echo "=== Generated report videos ==="
+          find allure-report -type f -name "*.webm" -print 2>/dev/null || true
 
       - name: Generate Allure report
         if: always()
