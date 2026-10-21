@@ -1,0 +1,15 @@
+
+[
+    {
+        "username": "Admin",
+        "password": "admin123",
+        "should_login": true,
+        "id": "valid-credentials"
+    },
+    {
+        "username": "Admin",
+        "password": "wrong-password",
+        "should_login": false,
+        "id": "invalid-password"
+    }
+]

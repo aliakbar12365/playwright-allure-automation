@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Pytest
+.pytest_cache/
+
+# Allure generated results and reports
+allure-results/
+allure-report/
+
+# Playwright output
+test-results/
+playwright-report/
+screenshots/
